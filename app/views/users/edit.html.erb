@@ -1,0 +1,10 @@
+<% provide(:title, "Edit Profile") %>
+<% provide(:button_text, "Save Changes") %>
+<% provide(:submit_path, user_path) %>
+
+<h1>Update your profile</h1>
+<%= render 'form' %>
+
+<%= link_to "All users", users_path %>
+<%= link_to "Profile", user_path(@user) %>
+
