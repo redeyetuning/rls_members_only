@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2018_06_11_090609) do
     t.boolean "member", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "remember_digest"
+    t.string "remember_token"
   end
 
 end
