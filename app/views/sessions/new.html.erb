@@ -1,0 +1,12 @@
+<% provide(:title, "Login") %> 
+<div class = "form-container">
+	<%= form_for '/login' do |f| %>
+		<%= f.label :email, class: "form" %>
+		<%= f.text_field :email, class: "form" %>
+
+		<%= f.label :password, class: "form" %>
+		<%= f.password_field :password, class: "form" %>
+
+		<%= f.submit "Login" %>
+	<% end %>
+</div>
