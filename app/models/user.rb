@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 	#attr_accessor :remember_token
 
-	before_save :add_remember_digest
+	before_create :create_remember_token
 
 	validates :name, presence: true, length: {minimum:6, maximum:50} 
 
