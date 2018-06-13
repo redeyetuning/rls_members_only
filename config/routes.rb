@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'posts/new'
+  get 'posts/create'
+  get 'posts/index'
 	root 'static_pages#home'
 
   get '/', to: 'static_pages#home'
@@ -14,6 +17,7 @@ Rails.application.routes.draw do
 	delete '/logout', to: 'sessions#destroy'
 
 	resources :users
+	resources :posts, only: [:new,:create, :index]
 
 
 end

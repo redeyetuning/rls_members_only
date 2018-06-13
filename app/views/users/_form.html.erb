@@ -1,16 +1,16 @@
 <div class = "form-container">
 	<%= render 'shared/error_messages' %>
 	<%= form_for(@user, url: yield(:submit_path)) do |f| %>
-		<%= f.label :name %>
+		<%= f.label :name, class: "form"%>
 		<%= f.text_field :name, class: "form" %>
 
-		<%= f.label :email %>
+		<%= f.label :email, class: "form" %>
 		<%= f.text_field :email, class: "form" %>
 
-		<%= f.label :password %>
+		<%= f.label :password, class: "form" %>
 		<%= f.password_field :password, class: "form" %>
 
-		<%= f.label :password_confirmation %>
+		<%= f.label :password_confirmation, class: "form" %>
 		<%= f.password_field :password_confirmation, class: "form" %> 
 
 		<%= f.submit yield(:button_text), class: "btn" %>

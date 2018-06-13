@@ -1,0 +1,29 @@
+<% provide :title, "New Post" %>
+<% provide :submit_path, posts_path %>
+<% provide :button_text, "Create post" %>
+<h1>Create a new post</h1>
+
+<% if @post.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@post.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class = "form-container">
+<%= form_for(@post, url: yield(:submit_path)) do |f| %>
+	<%= f.label :title, class: "form" %>
+	<%= f.text_field :title, class: "form" %>
+
+	<%= f.label :body, class: "form" %>
+	<%= f.text_field :body, class: "form long-text" %>
+
+	<%= f.submit yield(:button_text) %>
+<% end %>
+</div>  
