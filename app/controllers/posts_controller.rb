@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :signed_in_user, only: [:new, :create]
+
   def new
   	@post = Post.new
   end
@@ -8,7 +10,7 @@ class PostsController < ApplicationController
   	@post.user_id = current_user.id
   	if @post.save
   		flash[:success] = "Post created"
-  		redirect_to posts_path(@post)
+  		redirect_to posts_path
   	else
   		flash[:error] = "Error!"
   		render 'new'
@@ -30,7 +32,7 @@ class PostsController < ApplicationController
   def update
     post = Post.find(params[:id])
     if post.update_attributes(post_params)
-      flash[:sucess] = "Post updated succesfully"
+      flash[:success] = "Post updated succesfully"
       redirect_to post
     else
       flash[:error] = "Update error, please try again"
@@ -43,4 +45,12 @@ class PostsController < ApplicationController
   	def post_params
   		params.require(:post).permit(:title, :body, :user_id)
   	end
+
+    def signed_in_user
+      unless signed_in?
+        flash[:error] = "Please login"
+        redirect_to login_path
+      end
+
+    end
 end
